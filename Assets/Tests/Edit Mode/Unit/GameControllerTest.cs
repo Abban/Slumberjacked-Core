@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Edit.Unit.Game
+namespace Unit.Game
 {
     [TestFixture]
     public class GameControllerTest
