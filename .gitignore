@@ -71,3 +71,6 @@ crashlytics-build.properties
 
 # Don't ignore my libraries
 !Assets/Scripts/Library
+
+# Don't include Asset Store packages in repo
+Assets/Plugins
