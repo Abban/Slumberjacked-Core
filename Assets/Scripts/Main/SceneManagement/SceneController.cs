@@ -1,5 +1,6 @@
 using System.Collections;
 using UniRx;
+using BBX.Library.EventManagement;
 using UnityEngine.SceneManagement;
 
 namespace BBX.Main.SceneManagement
@@ -8,15 +9,18 @@ namespace BBX.Main.SceneManagement
     {
         private GameSettings.ScenesReferences _scenes;
         private ISceneTransition _transition;
+        private IEventBus _gameEventBus;
 
         public SceneReference CurrentScene { get; private set; }
 
         public SceneController(
             GameSettings.ScenesReferences scenes,
-            ISceneTransition transition)
+            ISceneTransition transition,
+            IEventBus gameEventBus)
         {
             _scenes = scenes;
             _transition = transition;
+            _gameEventBus = gameEventBus;
         }
 
         
@@ -29,7 +33,7 @@ namespace BBX.Main.SceneManagement
                 .Subscribe(x =>
                 {
                     CurrentScene = scene;
-                    // Fire event
+                    _gameEventBus.Fire(GameEvents.OnGameLoaded);
                 });
         }
         
