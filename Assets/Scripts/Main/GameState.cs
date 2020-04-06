@@ -1,16 +1,19 @@
+using UnityEngine;
 using BBX.Library.StateObserver;
 using BBX.Main.SceneManagement;
 
 namespace BBX.Main
 {
-    public class GameState
+    [CreateAssetMenu(fileName = "GameState", menuName = "BBX/Game State")]
+    public class GameState : ScriptableObject
     {
-        public IObservableStateProperty<SceneReference> CurrentScene { get; }
-        
-        
-        public GameState(IObservableStateProperty<SceneReference> currentScene)
+        public IObservableStateProperty<SceneReference> CurrentScene { get; set; }
+
+        public void Initialise(
+            IStatePropertyBroker stateBroker,
+            SceneReference defaultScene)
         {
-            CurrentScene = currentScene;
+            CurrentScene = new ObservableStateProperty<SceneReference>(stateBroker, defaultScene);
         }
     }
 }

@@ -1,7 +1,25 @@
+using BBX.Library.EventManagement;
+using BBX.Main.SceneManagement;
+
 namespace BBX.Main
 {
-    public class GameEvents
+    public class ChangeSceneEvent : IEvent
     {
-        public const string OnGameLoaded = "onGameLoaded";
+        public SceneReference Scene { get; }
+
+        public ChangeSceneEvent(SceneReference scene)
+        {
+            Scene = scene;
+        }
+    }
+    
+    public class SceneChangedEvent : IEvent
+    {
+        public SceneReference Scene { get; }
+
+        public SceneChangedEvent(SceneReference scene)
+        {
+            Scene = scene;
+        }
     }
 }

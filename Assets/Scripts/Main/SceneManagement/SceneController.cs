@@ -33,7 +33,7 @@ namespace BBX.Main.SceneManagement
                 .Subscribe(x =>
                 {
                     CurrentScene = scene;
-                    _gameEventBus.Fire(GameEvents.OnGameLoaded);
+                    _gameEventBus.Fire(new SceneChangedEvent(scene));
                 });
         }
         

@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 251851798}
   - component: {fileID: 251851797}
   - component: {fileID: 251851796}
+  - component: {fileID: 251851799}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -285,7 +286,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 251851797}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 251851799}
+        m_MethodName: OnClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 4b1e8d1c888654becb7d4e379f401205,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: BBX.Main.SceneManagement.SceneReference,
+            Scripts
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &251851797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +336,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251851794}
   m_CullTransparentMesh: 0
+--- !u!114 &251851799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251851794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e26d6b317d46049c0b3e980d673830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventBus: {fileID: 11400000, guid: ea1df1977e0d04a58bd941cf6050c3f7, type: 2}
 --- !u!1 &275966703
 GameObject:
   m_ObjectHideFlags: 0

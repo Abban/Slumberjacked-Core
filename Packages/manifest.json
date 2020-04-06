@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.bigbadstudios.library.eventbus": "ssh://git@github.com/Abban/BigBadStudiosUnityEventBus.git",
+    "com.bigbadstudios.library.stateobserver": "ssh://git@github.com/Abban/BigBadStudiosStateObserver.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.collab-proxy": "1.2.16",
@@ -40,5 +42,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.bigbadstudios.library.eventbus": {
+      "revision": "HEAD",
+      "hash": "d573016ebbde38a0b8b33ae2eb6acdcfa51fb1a2"
+    },
+    "com.bigbadstudios.library.stateobserver": {
+      "revision": "HEAD",
+      "hash": "b97b2f5bb1bac8e04dd80ea83f50cd8bb7151418"
+    }
   }
 }

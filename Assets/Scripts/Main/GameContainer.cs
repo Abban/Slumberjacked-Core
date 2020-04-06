@@ -1,6 +1,6 @@
-using BBX.Library.EventManagement;
 using UnityEngine;
 using BBX.Main.SceneManagement;
+using BBX.Utility;
 
 namespace BBX.Main
 {
@@ -8,10 +8,12 @@ namespace BBX.Main
     {
         [SerializeField] private GameSettings settings = null;
         [SerializeField] private GameObject sceneTransition = null; 
+        [SerializeField] private EventBus gameEventBus = null;
+        [SerializeField] private GameState gameState = null; 
+        [SerializeField] private StateBroker gameStateBroker = null;
         
         private GameController _gameController;
         private SceneController _sceneController;
-        private EventBus _gameEventBus;
 
         private void Awake()
         {
@@ -22,25 +24,22 @@ namespace BBX.Main
 
         private void InitialiseGame()
         {
-            _gameEventBus = new EventBus();
+            gameEventBus.Initialise();
+            gameStateBroker.Initialise();
 
             _sceneController = new SceneController(
                 settings.Scenes,
                 sceneTransition.GetComponent<ISceneTransition>(),
-                _gameEventBus
+                gameEventBus
             );
             
             _gameController = new GameController(
                 _sceneController,
                 settings,
-                _gameEventBus
+                gameStateBroker,
+                gameState,
+                gameEventBus
             );
-        }
-
-
-        private void InitialiseGameState()
-        {
-            
         }
 
 
@@ -53,8 +52,7 @@ namespace BBX.Main
         {
             _gameController.OnDisable();
         }
-
-
+        
         private void Start()
         {
             _gameController.Start();

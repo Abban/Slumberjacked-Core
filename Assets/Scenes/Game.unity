@@ -338,6 +338,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 36fdce56f8fa14a1ba622dab91c072f7, type: 2}
   sceneTransition: {fileID: 671581079}
+  gameEventBus: {fileID: 11400000, guid: ea1df1977e0d04a58bd941cf6050c3f7, type: 2}
+  gameState: {fileID: 11400000, guid: 8c3b87eaadce5403da1d879d9756ee37, type: 2}
+  gameStateBroker: {fileID: 11400000, guid: 0e518efce23514691bc6c76137b7bd46, type: 2}
 --- !u!4 &914936924
 Transform:
   m_ObjectHideFlags: 0
