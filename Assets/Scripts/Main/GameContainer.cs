@@ -28,7 +28,6 @@ namespace BBX.Main
             gameStateBroker.Initialise();
 
             _sceneController = new SceneController(
-                settings.Scenes,
                 sceneTransition.GetComponent<ISceneTransition>(),
                 gameEventBus
             );

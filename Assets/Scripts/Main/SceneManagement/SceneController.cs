@@ -1,24 +1,22 @@
 using System.Collections;
 using UniRx;
 using BBX.Library.EventManagement;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace BBX.Main.SceneManagement
 {
     public class SceneController
     {
-        private GameSettings.ScenesReferences _scenes;
         private ISceneTransition _transition;
         private IEventBus _gameEventBus;
 
         public SceneReference CurrentScene { get; private set; }
 
         public SceneController(
-            GameSettings.ScenesReferences scenes,
             ISceneTransition transition,
             IEventBus gameEventBus)
         {
-            _scenes = scenes;
             _transition = transition;
             _gameEventBus = gameEventBus;
         }

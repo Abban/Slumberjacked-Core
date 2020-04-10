@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Unit.Board
 {
-    public class TestBoardItem
-    {
-    }
-
     [TestFixture]
     public class BoardRegistryTest
     {
+        private class TestBoardItem
+        {
+        }
+        
         [Test]
         public void OnAddItem_AddsItem()
         {
