@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.bigbadstudios.library.eventbus": "ssh://git@github.com/Abban/BigBadStudiosUnityEventBus.git",
+    "com.bigbadstudios.library.statemachine": "ssh://git@github.com/Abban/BigBadStudiosFiniteStateMachine.git",
     "com.bigbadstudios.library.stateobserver": "ssh://git@github.com/Abban/BigBadStudiosStateObserver.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
@@ -51,6 +52,10 @@
     "com.bigbadstudios.library.stateobserver": {
       "revision": "HEAD",
       "hash": "b97b2f5bb1bac8e04dd80ea83f50cd8bb7151418"
+    },
+    "com.bigbadstudios.library.statemachine": {
+      "revision": "HEAD",
+      "hash": "5cbd7584849215256ec6721d626453d429e7f4f0"
     }
   }
 }

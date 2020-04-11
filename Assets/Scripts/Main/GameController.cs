@@ -40,6 +40,7 @@ namespace BBX.Main
             _gameEventBus.Unsubscribe<ChangeSceneEvent>(OnChangeScene);
         }
 
+        
         public void Start()
         {
             _state.Initialise(_stateBroker, null);
@@ -50,11 +51,13 @@ namespace BBX.Main
             }
         }
 
+        
         private void OnChangeScene(ChangeSceneEvent sceneEvent)
         {
             _sceneController.LoadScene(sceneEvent.Scene);
         }
 
+        
         private void OnSceneLoaded(SceneChangedEvent sceneEvent)
         {
             _state.CurrentScene.Value = sceneEvent.Scene;

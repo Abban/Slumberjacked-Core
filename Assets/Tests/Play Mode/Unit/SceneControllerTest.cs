@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Diagnostics;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
