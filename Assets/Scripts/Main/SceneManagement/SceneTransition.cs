@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,12 +7,21 @@ namespace BBX.Main.SceneManagement
     {
         [SerializeField] private CanvasGroup canvas = null;
 
+        public bool IsVisible { get; private set; }
 
-        public void Start()
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
+
+        private void Start()
         {
             canvas.alpha = 0;
             canvas.interactable = false;
             canvas.blocksRaycasts = false;
+            IsVisible = false;
         }
         
 
@@ -22,6 +30,7 @@ namespace BBX.Main.SceneManagement
             canvas.alpha = 1;
             canvas.interactable = true;
             canvas.blocksRaycasts = true;
+            IsVisible = true;
 
             yield return null;
         }
@@ -32,6 +41,7 @@ namespace BBX.Main.SceneManagement
             canvas.alpha = 0;
             canvas.interactable = false;
             canvas.blocksRaycasts = false;
+            IsVisible = false;
             
             yield return null;
         }

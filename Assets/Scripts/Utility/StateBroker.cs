@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BBX.Utility
 {
-    [CreateAssetMenu(fileName = "StateBroker", menuName = "BBX/State Broker", order = 0)]
+    [CreateAssetMenu(fileName = "StateBroker", menuName = "BBX/Utility/State Broker", order = 0)]
     public class StateBroker : ScriptableObject, IStatePropertyBroker, IStateObserverNotifier
     {
         private ObservableStateBroker _stateBroker;

@@ -4,7 +4,7 @@ using BBX.Library.EventManagement;
 
 namespace BBX.Utility
 {
-    [CreateAssetMenu(fileName = "EventBus", menuName = "BBX/Event Bus")]
+    [CreateAssetMenu(fileName = "EventBus", menuName = "BBX/Utility/Event Bus")]
     public class EventBus : ScriptableObject, IEventBus
     {
         private IEventBus _eventBus;

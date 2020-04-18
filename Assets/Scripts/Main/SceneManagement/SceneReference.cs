@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BBX.Main.SceneManagement
 {
-    [CreateAssetMenu(fileName = "SceneReference", menuName = "BBX/Scene Reference")]
+    [CreateAssetMenu(fileName = "SceneReference", menuName = "BBX/Scene/Reference")]
     public class SceneReference : ScriptableObject
     {
         [SerializeField] private SceneAsset scene = null;

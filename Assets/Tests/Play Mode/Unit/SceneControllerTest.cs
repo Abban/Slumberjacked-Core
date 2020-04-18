@@ -107,6 +107,8 @@ namespace Play.Unit.Game
 
         private class SceneTransition : ISceneTransition
         {
+            public bool IsVisible { get; }
+
             public IEnumerator Show()
             {
                 yield return null;

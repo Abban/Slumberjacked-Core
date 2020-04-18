@@ -1,8 +1,7 @@
 using System.Collections;
 using UniRx;
-using BBX.Library.EventManagement;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using BBX.Library.EventManagement;
 
 namespace BBX.Main.SceneManagement
 {

@@ -4,7 +4,7 @@ using BBX.Main.SceneManagement;
 
 namespace BBX.Main
 {
-    [CreateAssetMenu(fileName = "GameSettings", menuName = "BBX/Game Settings")]
+    [CreateAssetMenu(fileName = "GameSettings", menuName = "BBX/Game/Settings")]
     public class GameSettings : ScriptableObject
     {
         [SerializeField] private ScenesReferences scenes = null;

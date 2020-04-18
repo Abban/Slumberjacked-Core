@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd104a841e741a1851cdedf29707270, type: 3}
+  m_Name: GameFactory
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 36fdce56f8fa14a1ba622dab91c072f7, type: 2}
+  sceneTransitionPrefab: {fileID: 6175337765214906025, guid: caab1a67e806c49e29ad8ca982d772f2,
+    type: 3}
+  gameEventBus: {fileID: 11400000, guid: ea1df1977e0d04a58bd941cf6050c3f7, type: 2}
+  gameState: {fileID: 11400000, guid: 8c3b87eaadce5403da1d879d9756ee37, type: 2}
+  gameStateBroker: {fileID: 11400000, guid: 0e518efce23514691bc6c76137b7bd46, type: 2}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Actor
 {
-    [CreateAssetMenu(fileName = "ActorSettings", menuName = "BBX/Actor Settings")]
+    [CreateAssetMenu(fileName = "ActorSettings", menuName = "BBX/Actors/Settings")]
     public class ActorSettings : ScriptableObject
     {
         
