@@ -1,7 +1,10 @@
 using UnityEngine;
 
-namespace BBX.Main
+namespace BBX.Main.GameManagement
 {
+    /// <summary>
+    /// TODO: Make sure this only initialises the controller and runs lifecycle methods
+    /// </summary>
     public class GameFacade : MonoBehaviour
     {
         [SerializeField] private GameFactory gameFactory = null;
@@ -11,18 +14,9 @@ namespace BBX.Main
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            InitialiseGame();
-        }
-
-
-        private void InitialiseGame()
-        {
-            gameFactory.EventBus.Initialise();
-            gameFactory.StateBroker.Initialise();
-            
             _gameController = gameFactory.GameController;
+            _gameController.Initialise();
         }
-
 
         private void OnEnable()
         {

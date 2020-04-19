@@ -1,7 +1,8 @@
 using BBX.Library.EventManagement;
+using BBX.Main.SaveManagement.Models;
 using BBX.Main.SceneManagement;
 
-namespace BBX.Main
+namespace BBX.Main.GameManagement
 {
     public class ChangeSceneEvent : IEvent
     {
@@ -20,6 +21,16 @@ namespace BBX.Main
         public SceneChangedEvent(SceneReference scene)
         {
             Scene = scene;
+        }
+    }
+    
+    public class SaveLoadedEvent : IEvent
+    {
+        public Game GameData { get; }
+
+        public SaveLoadedEvent(Game gameData)
+        {
+            GameData = gameData;
         }
     }
 }

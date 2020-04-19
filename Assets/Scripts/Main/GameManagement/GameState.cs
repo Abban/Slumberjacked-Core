@@ -1,8 +1,9 @@
 using UnityEngine;
 using BBX.Library.StateObserver;
+using BBX.Main.SaveManagement.Models;
 using BBX.Main.SceneManagement;
 
-namespace BBX.Main
+namespace BBX.Main.GameManagement
 {
     [CreateAssetMenu(fileName = "GameState", menuName = "BBX/Game/State")]
     public class GameState : ScriptableObject

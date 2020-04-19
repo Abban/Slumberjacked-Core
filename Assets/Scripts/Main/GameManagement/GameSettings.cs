@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using BBX.Main.SceneManagement;
 
-namespace BBX.Main
+namespace BBX.Main.GameManagement
 {
     [CreateAssetMenu(fileName = "GameSettings", menuName = "BBX/Game/Settings")]
     public class GameSettings : ScriptableObject

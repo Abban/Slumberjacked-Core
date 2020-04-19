@@ -18,3 +18,7 @@ MonoBehaviour:
   gameEventBus: {fileID: 11400000, guid: ea1df1977e0d04a58bd941cf6050c3f7, type: 2}
   gameState: {fileID: 11400000, guid: 8c3b87eaadce5403da1d879d9756ee37, type: 2}
   gameStateBroker: {fileID: 11400000, guid: 0e518efce23514691bc6c76137b7bd46, type: 2}
+  levelRegistry: {fileID: 11400000, guid: 54d4b618782d444a6bcccdd9fcb3cbad, type: 2}
+  saveComponents:
+    gameData: {fileID: 11400000, guid: f35d7605b71c2492c95bfa0e519c7301, type: 2}
+    defaultGameData: {fileID: 11400000, guid: 9b5bf9952f0574a4e8a201196cec8640, type: 2}

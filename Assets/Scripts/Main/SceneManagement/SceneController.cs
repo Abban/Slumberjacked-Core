@@ -2,6 +2,7 @@ using System.Collections;
 using UniRx;
 using UnityEngine.SceneManagement;
 using BBX.Library.EventManagement;
+using BBX.Main.GameManagement;
 
 namespace BBX.Main.SceneManagement
 {

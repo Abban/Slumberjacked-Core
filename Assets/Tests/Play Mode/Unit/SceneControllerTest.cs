@@ -4,9 +4,9 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-using BBX.Main;
 using BBX.Main.SceneManagement;
 using BBX.Library.EventManagement;
+using BBX.Main.GameManagement;
 
 namespace Play.Unit.Game
 {

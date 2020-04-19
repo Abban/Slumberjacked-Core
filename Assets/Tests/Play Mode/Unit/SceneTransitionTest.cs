@@ -2,7 +2,7 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using BBX.Main;
+using BBX.Main.GameManagement;
 using BBX.Main.SceneManagement;
 
 namespace Play.Unit.Game
@@ -28,6 +28,7 @@ namespace Play.Unit.Game
             Assert.That(!_transition.IsVisible);
         }
         
+        
         [UnityTest]
         public IEnumerator OnShow_BecomesVisible()
         {
@@ -35,6 +36,7 @@ namespace Play.Unit.Game
             
             Assert.That(_transition.IsVisible);
         }
+        
         
         [UnityTest]
         public IEnumerator OnHide_BecomesNotVisible()

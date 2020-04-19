@@ -1,4 +1,4 @@
-namespace BBX.Main
+namespace BBX.Main.LevelManagement
 {
     public class LevelController
     {
