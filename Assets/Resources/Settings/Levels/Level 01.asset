@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f519529ade84a4b95dbabd7ddf2d1c1, type: 3}
   m_Name: Level 01
   m_EditorClassIdentifier: 
-  unlocked: 1
+  scene: {fileID: 102900000, guid: 6fe806167b3aa4352a8276cd26742c6d, type: 3}
+  guid: 30d075bb-1a59-4b6e-bf64-b85781598cf7
+  locked: 1

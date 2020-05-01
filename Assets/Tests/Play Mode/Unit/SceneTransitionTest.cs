@@ -2,8 +2,8 @@ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using BBX.Main.GameManagement;
-using BBX.Main.SceneManagement;
+using BBX.Main.Game;
+using BBX.Main.Scene;
 
 namespace Play.Unit.Game
 {

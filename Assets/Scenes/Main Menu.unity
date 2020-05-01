@@ -274,10 +274,9 @@ MonoBehaviour:
         m_MethodName: OnClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 4d31602d4b0b047a389bf9fcdf7c0ec0,
+          m_ObjectArgument: {fileID: 11400000, guid: 864ebbdbc13624385b6f311c34989ea1,
             type: 2}
-          m_ObjectArgumentAssemblyTypeName: BBX.Main.SceneManagement.SceneReference,
-            Scripts
+          m_ObjectArgumentAssemblyTypeName: BBX.Main.Scene.SceneReference, Scripts
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -542,7 +541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Load Level
+  m_text: Select Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f23d20da31ae6428ba71786adde01155, type: 2}
   m_sharedMaterial: {fileID: -3282058685808815518, guid: f23d20da31ae6428ba71786adde01155,
@@ -612,7 +611,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 852118978}
-    characterCount: 10
+    characterCount: 12
     spriteCount: 0
     spaceCount: 1
     wordCount: 2

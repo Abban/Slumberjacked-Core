@@ -15,4 +15,4 @@ MonoBehaviour:
   scenes:
     defaultScene: {fileID: 11400000, guid: 4b1e8d1c888654becb7d4e379f401205, type: 2}
     mainMenu: {fileID: 11400000, guid: 4b1e8d1c888654becb7d4e379f401205, type: 2}
-    level: {fileID: 11400000, guid: 4d31602d4b0b047a389bf9fcdf7c0ec0, type: 2}
+    shop: {fileID: 11400000, guid: f44f40cc2a6f84993993e4507ba00e24, type: 2}

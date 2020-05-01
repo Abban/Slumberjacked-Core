@@ -1,6 +1,6 @@
 using UnityEngine;
-using BBX.Main.SceneManagement;
-using BBX.Main.GameManagement;
+using BBX.Main.Scene;
+using BBX.Main.Game;
 using BBX.Utility;
 
 namespace UI

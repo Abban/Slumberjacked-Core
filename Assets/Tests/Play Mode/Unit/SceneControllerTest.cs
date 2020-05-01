@@ -4,9 +4,9 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
-using BBX.Main.SceneManagement;
+using BBX.Main.Scene;
 using BBX.Library.EventManagement;
-using BBX.Main.GameManagement;
+using BBX.Main.Game;
 
 namespace Play.Unit.Game
 {
@@ -15,14 +15,17 @@ namespace Play.Unit.Game
     {
         private SceneController _sceneController;
         private GameSettings _gameSettings;
+        private GameState _gameState;
 
         [SetUp]
         public void Setup()
         {
             _gameSettings = Resources.Load<GameSettings>("Settings/Game/GameSettings");
+            _gameState = Resources.Load<GameState>("Settings/Game/GameState");
 
             _sceneController = new SceneController(
                 new SceneTransition(),
+                _gameState,
                 new EventBus()
             );
         }
@@ -57,7 +60,7 @@ namespace Play.Unit.Game
         public IEnumerator OnLoadScene_UnloadsPreviousScene()
         {
             var firstSceneToLoad = _gameSettings.Scenes.MainMenu;
-            var secondSceneToLoad = _gameSettings.Scenes.Level;
+            var secondSceneToLoad = _gameSettings.Scenes.Shop;
             var loaded = false;
             var unloaded = false;
             var unloadedScene = string.Empty;
@@ -86,6 +89,13 @@ namespace Play.Unit.Game
             }
 
             Assert.That(firstSceneToLoad.SceneName == unloadedScene);
+        }
+
+        
+        [UnityTest]
+        public IEnumerator OnLoadSameScene_DoesNotLoadScene()
+        {
+            throw new NotImplementedException();
         }
 
 
