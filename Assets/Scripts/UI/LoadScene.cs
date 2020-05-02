@@ -3,7 +3,7 @@ using BBX.Main.Scene;
 using BBX.Main.Game;
 using BBX.Utility;
 
-namespace UI
+namespace BBX.UI
 {
     public class LoadScene : MonoBehaviour
     {

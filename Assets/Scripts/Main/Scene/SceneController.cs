@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using BBX.Library.EventManagement;
 using BBX.Main.Game;
-using UnityEngine;
 
 namespace BBX.Main.Scene
 {
@@ -26,16 +25,20 @@ namespace BBX.Main.Scene
 
         public IEnumerator LoadScene(SceneReference scene)
         {
+            _gameState.LoadingState.Value = GameState.LoadingStates.Idle;
+
             yield return _transition.Show();
             
             if (scene != _gameState.CurrentScene.Value)
             {
                 yield return UnLoadScene();
                 yield return LoadScene(scene.SceneName);
+                _gameState.CurrentScene.Value = scene;
             }
             
             yield return _transition.Hide();
-
+            
+            _gameState.LoadingState.Value = GameState.LoadingStates.Idle;
             _gameEventBus.Fire(new SceneChangedEvent(scene));
         }
 

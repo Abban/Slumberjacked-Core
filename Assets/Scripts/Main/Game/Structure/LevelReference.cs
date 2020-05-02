@@ -6,8 +6,11 @@ namespace BBX.Main.Game.Structure
     [CreateAssetMenu(fileName = "LevelReference", menuName = "BBX/Structure/Level Reference")]
     public class LevelReference : SceneReference
     {
+        [SerializeField] private string levelName = string.Empty;
         [SerializeField] private string guid = string.Empty;
         [SerializeField] private bool locked = true;
+
+        public string Name => levelName;
         
         public string Guid {
             get

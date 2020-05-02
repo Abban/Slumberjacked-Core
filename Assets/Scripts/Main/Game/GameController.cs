@@ -71,17 +71,13 @@ namespace BBX.Main.Game
 
         private void OnSceneLoaded(SceneChangedEvent sceneEvent)
         {
-            _state.LoadingState.Value = GameState.LoadingStates.Idle;
-            _state.CurrentScene.Value = sceneEvent.Scene;
             _stateBroker.NotifyObservers();
         }
 
 
         private void LoadScene(SceneReference scene)
         {
-            _state.LoadingState.Value = GameState.LoadingStates.Loading;
             _coroutineRunner.StartCoroutine(_sceneController.LoadScene(scene));
-            _stateBroker.NotifyObservers();
         }
     }
 }

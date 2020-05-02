@@ -3,8 +3,9 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Scripts",
-        "Unity.BBX.Library.EventBus"
+        "Unity.BBX.Library.EventBus",
+        "Unity.BBX.Library.StateObserver",
+        "Scripts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
