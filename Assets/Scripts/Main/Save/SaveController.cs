@@ -1,37 +1,24 @@
-using System;
-using System.Collections.Generic;
+using BBX.Library.EventManagement;
 using BBX.Main.Game;
 using BBX.Main.Save.Interfaces;
 using BBX.Main.Save.Models;
-using BBX.Utility;
-using UnityEngine;
 
 namespace BBX.Main.Save
 {
     public class SaveController
     {
-        private GameModel _gameModelData;
-        private readonly GameModel _defaultGameModelData;
-        private readonly EventBus _eventBus;
-        private readonly IDataRepository<GameModel> _dataRepository;
-        private readonly List<WorldModel> _worlds;
-        private readonly List<LevelModel> _levels;
-        
-        private const string FileName = "save.bbx";
+        private SaveGame _saveGame;
+        private readonly IEventBus _eventBus;
+        private readonly IDataRepository<SaveGame.SaveData> _dataRepository;
 
         public SaveController(
-            Components components,
-            EventBus eventBus,
-            IDataRepository<GameModel> dataRepository,
-            List<WorldModel> worlds,
-            List<LevelModel> levels)
+            SaveGame saveGame,
+            IEventBus eventBus,
+            IDataRepository<SaveGame.SaveData> dataRepository)
         {
-            _gameModelData = components.GameModelData;
-            _defaultGameModelData = components.DefaultGameModelData;
+            _saveGame = saveGame;
             _eventBus = eventBus;
             _dataRepository = dataRepository;
-            _worlds = worlds;
-            _levels = levels;
         }
 
 
@@ -41,45 +28,31 @@ namespace BBX.Main.Save
             Delete();
 #endif
             
-            if (!_dataRepository.Exists(FileName))
+            if (!_dataRepository.Exists(_saveGame.FileName))
             {
-                _gameModelData = _defaultGameModelData;
-                _gameModelData.SetReferences(_worlds, _levels);
-                
                 Save();
             }
-            
+
             Load();
         }
 
 
         public void Save()
         {
-            _dataRepository.Save(_gameModelData, FileName);
+            _dataRepository.Save(_saveGame.Save, _saveGame.FileName);
         }
 
 
         public void Load()
         {
-            _dataRepository.Load(_gameModelData, FileName);
-            _eventBus.Fire(new SaveLoadedEvent(_gameModelData));
+            _saveGame.Save = _dataRepository.Load(_saveGame.FileName);
+            _eventBus.Fire(new SaveLoadedEvent(_saveGame));
         }
-        
-        
+
+
         public void Delete()
         {
-            _dataRepository.Delete(FileName);
-        }
-        
-        
-        [Serializable]
-        public class Components
-        {
-            [SerializeField] private GameModel gameModelData = null;
-            [SerializeField] private GameModel defaultGameModelData = null;
-
-            public GameModel GameModelData => gameModelData;
-            public GameModel DefaultGameModelData => defaultGameModelData;
+            _dataRepository.Delete(_saveGame.FileName);
         }
     }
 }

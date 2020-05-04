@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7a316b8a5648efbf053fdc97f63670, type: 3}
+  m_Name: TestLevel_02
+  m_EditorClassIdentifier: 
+  saveData:
+    locked: 1
+    guid: f15e57c9-2c3c-4cc2-8653-55c718db8e2a
+  guid: f15e57c9-2c3c-4cc2-8653-55c718db8e2a
+  levelName: Test Level 02
+  scene: {fileID: 0}

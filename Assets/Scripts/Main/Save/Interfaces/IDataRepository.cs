@@ -6,31 +6,30 @@ namespace BBX.Main.Save.Interfaces
         /// save the data
         /// </summary>
         /// <param name="data"></param>
-        /// <param name="filename"></param>
-        void Save(T data, string filename);
+        /// <param name="fileName"></param>
+        void Save(T data, string fileName);
 
 
         /// <summary>
         /// Load the data
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filename"></param>
+        /// <param name="fileName"></param>
         /// <returns></returns>
-        void Load(T data, string filename);
+        T Load(string fileName);
         
         
         /// <summary>
         /// Does the data exist
         /// </summary>
-        /// <param name="filename"></param>
+        /// <param name="fileName"></param>
         /// <returns></returns>
-        bool Exists(string filename);
+        bool Exists(string fileName);
         
         
         /// <summary>
         /// Delete the data
         /// </summary>
-        /// <param name="filename"></param>
-        void Delete(string filename);
+        /// <param name="fileName"></param>
+        void Delete(string fileName);
     }
 }

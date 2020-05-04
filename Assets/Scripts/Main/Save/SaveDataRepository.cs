@@ -1,25 +1,26 @@
 using System;
 using BBX.Main.Save.Interfaces;
+using BBX.Main.Save.Models;
 using UnityEngine;
 
 namespace BBX.Main.Save
 {
-    public class SaveDataRepository : IDataRepository<Models.GameModel>
+    public class SaveDataRepository : IDataRepository<SaveGame.SaveData>
     {
         /// <inheritdoc />
-        public void Save(Models.GameModel data, string filename)
+        public void Save(SaveGame.SaveData data, string fileName)
         {
             System.IO.File.WriteAllText(
-                filename,
+                fileName,
                 JsonUtility.ToJson(data, true)
             );
         }
 
         
         /// <inheritdoc />
-        public void Load(Models.GameModel data, string filename)
+        public SaveGame.SaveData Load(string fileName)
         {
-            if (!Exists(filename))
+            if (!Exists(fileName))
             {
                 const string exception = "Tried to load save file that did not exist";
 #if UNITY_EDITOR
@@ -29,24 +30,21 @@ namespace BBX.Main.Save
 #endif
             }
 
-            JsonUtility.FromJsonOverwrite(
-                System.IO.File.ReadAllText(filename),
-                data
-            );
+            return JsonUtility.FromJson<SaveGame.SaveData>(System.IO.File.ReadAllText(fileName));
         }
 
         
         /// <inheritdoc />
-        public bool Exists(string filename)
+        public bool Exists(string fileName)
         {
-            return System.IO.File.Exists(filename);
+            return System.IO.File.Exists(fileName);
         }
 
         
         /// <inheritdoc />
-        public void Delete(string filename)
+        public void Delete(string fileName)
         {
-            System.IO.File.Delete(filename);
+            System.IO.File.Delete(fileName);
         }
     }
 }

@@ -1,14 +1,14 @@
 using BBX.Library.EventManagement;
 using BBX.Main.Save.Models;
-using BBX.Main.Scene;
+using BBX.Main.Scene.Interfaces;
 
 namespace BBX.Main.Game
 {
     public class ChangeSceneEvent : IEvent
     {
-        public SceneReference Scene { get; }
+        public ISceneReference Scene { get; }
 
-        public ChangeSceneEvent(SceneReference scene)
+        public ChangeSceneEvent(ISceneReference scene)
         {
             Scene = scene;
         }
@@ -17,9 +17,9 @@ namespace BBX.Main.Game
     
     public class SceneChangedEvent : IEvent
     {
-        public SceneReference Scene { get; }
+        public ISceneReference Scene { get; }
 
-        public SceneChangedEvent(SceneReference scene)
+        public SceneChangedEvent(ISceneReference scene)
         {
             Scene = scene;
         }
@@ -28,11 +28,11 @@ namespace BBX.Main.Game
 
     public class SaveLoadedEvent : IEvent
     {
-        public GameModel GameModelData { get; }
+        public SaveGame SaveGame { get; }
 
-        public SaveLoadedEvent(GameModel gameModelData)
+        public SaveLoadedEvent(SaveGame saveGame)
         {
-            GameModelData = gameModelData;
+            SaveGame = saveGame;
         }
     }
 }

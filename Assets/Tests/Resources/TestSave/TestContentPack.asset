@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be722143f4494185849f790ca7aa0e77, type: 3}
+  m_Name: TestContentPack
+  m_EditorClassIdentifier: 
+  guid: a3808bee-203d-4ffb-a494-981d04c1c30e
+  saveData:
+    guid: a3808bee-203d-4ffb-a494-981d04c1c30e
+    locked: 0
+    lastUnlockedWorldGuid: 
+    lastUnlockedLevelGuid: 
+    worlds:
+    - locked: 0
+      guid: 166850b3-8afa-462f-944e-345541789607
+      levels:
+      - locked: 0
+        guid: f2b26722-f034-454d-a382-0acced9c316a
+      - locked: 1
+        guid: f15e57c9-2c3c-4cc2-8653-55c718db8e2a
+  packName: 
+  packId: 
+  worlds:
+  - {fileID: 11400000, guid: b59dd9c988f9b415c96da63c9eac269e, type: 2}

@@ -1,0 +1,16 @@
+{
+    "name": "TestResources",
+    "references": [
+        "GUID:b91c056e1c8ae41a689da3be780a1c01",
+        "GUID:370c8edc46d0b4cf98afcdc8d9cbc8c8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

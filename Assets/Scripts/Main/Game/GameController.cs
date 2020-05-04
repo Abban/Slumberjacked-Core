@@ -1,4 +1,5 @@
 ﻿using BBX.Main.Scene;
+using BBX.Main.Scene.Interfaces;
 using BBX.Utility;
 using UnityEngine;
 using EventBus = BBX.Utility.EventBus;
@@ -75,7 +76,7 @@ namespace BBX.Main.Game
         }
 
 
-        private void LoadScene(SceneReference scene)
+        private void LoadScene(ISceneReference scene)
         {
             _coroutineRunner.StartCoroutine(_sceneController.LoadScene(scene));
         }

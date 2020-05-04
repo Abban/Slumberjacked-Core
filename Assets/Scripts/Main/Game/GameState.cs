@@ -1,6 +1,6 @@
 using UnityEngine;
 using BBX.Library.StateObserver;
-using BBX.Main.Scene;
+using BBX.Main.Scene.Interfaces;
 
 namespace BBX.Main.Game
 {
@@ -13,13 +13,13 @@ namespace BBX.Main.Game
             Loading
         }
 
-        public IObservableStateProperty<SceneReference> CurrentScene { get; set; }
+        public IObservableStateProperty<ISceneReference> CurrentScene { get; set; }
         public IObservableStateProperty<LoadingStates> LoadingState { get; set; }
 
         public void Initialise(
             IStatePropertyBroker stateBroker)
         {
-            CurrentScene = new ObservableStateProperty<SceneReference>(stateBroker, null);
+            CurrentScene = new ObservableStateProperty<ISceneReference>(stateBroker, null);
             LoadingState = new ObservableStateProperty<LoadingStates>(stateBroker, LoadingStates.Idle);
         }
     }

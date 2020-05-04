@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be722143f4494185849f790ca7aa0e77, type: 3}
+  m_Name: Free
+  m_EditorClassIdentifier: 
+  guid: 9b790e4d-78de-4236-a2f2-976aba61cacd
+  saveData:
+    guid: 9b790e4d-78de-4236-a2f2-976aba61cacd
+    locked: 0
+    lastUnlockedWorldGuid: 
+    lastUnlockedLevelGuid: 
+    worlds:
+    - locked: 0
+      guid: 91cc15b2-28f9-46a7-9681-aae5330d47e1
+      levels:
+      - locked: 0
+        guid: 32e2b330-7fc1-493f-bf59-5108fc891eab
+      - locked: 1
+        guid: fc236146-acb5-403d-94ef-f06c9378cabf
+  packName: Free
+  packId: free
+  worlds:
+  - {fileID: 11400000, guid: 8a483202d5ac34ed685fe3853d84a1dd, type: 2}

@@ -13,14 +13,9 @@ MonoBehaviour:
   m_Name: GameFactory
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 36fdce56f8fa14a1ba622dab91c072f7, type: 2}
+  saveGame: {fileID: 11400000, guid: d5537d3af25144408a51cf7f6335c004, type: 2}
   sceneTransitionPrefab: {fileID: 6175337765214906025, guid: caab1a67e806c49e29ad8ca982d772f2,
     type: 3}
   gameEventBus: {fileID: 11400000, guid: ea1df1977e0d04a58bd941cf6050c3f7, type: 2}
   gameState: {fileID: 11400000, guid: 8c3b87eaadce5403da1d879d9756ee37, type: 2}
   gameStateBroker: {fileID: 11400000, guid: 0e518efce23514691bc6c76137b7bd46, type: 2}
-  gameStructureRegistry: {fileID: 11400000, guid: 54d4b618782d444a6bcccdd9fcb3cbad,
-    type: 2}
-  saveComponents:
-    gameModelData: {fileID: 11400000, guid: f35d7605b71c2492c95bfa0e519c7301, type: 2}
-    defaultGameModelData: {fileID: 11400000, guid: 9b5bf9952f0574a4e8a201196cec8640,
-      type: 2}

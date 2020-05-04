@@ -49,13 +49,13 @@
       "revision": "HEAD",
       "hash": "d573016ebbde38a0b8b33ae2eb6acdcfa51fb1a2"
     },
-    "com.bigbadstudios.library.stateobserver": {
-      "revision": "HEAD",
-      "hash": "b97b2f5bb1bac8e04dd80ea83f50cd8bb7151418"
-    },
     "com.bigbadstudios.library.statemachine": {
       "revision": "HEAD",
       "hash": "5cbd7584849215256ec6721d626453d429e7f4f0"
+    },
+    "com.bigbadstudios.library.stateobserver": {
+      "revision": "HEAD",
+      "hash": "b97b2f5bb1bac8e04dd80ea83f50cd8bb7151418"
     }
   }
 }

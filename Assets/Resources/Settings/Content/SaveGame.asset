@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72e4eae56354e5bb5bc393a3013b7bb, type: 3}
+  m_Name: SaveGame
+  m_EditorClassIdentifier: 
+  saveData:
+    contentPacks:
+    - guid: 9b790e4d-78de-4236-a2f2-976aba61cacd
+      locked: 0
+      lastUnlockedWorldGuid: 
+      lastUnlockedLevelGuid: 
+      worlds:
+      - locked: 0
+        guid: 91cc15b2-28f9-46a7-9681-aae5330d47e1
+        levels:
+        - locked: 0
+          guid: 32e2b330-7fc1-493f-bf59-5108fc891eab
+        - locked: 1
+          guid: fc236146-acb5-403d-94ef-f06c9378cabf
+  saveName: game
+  contentPacks:
+  - {fileID: 11400000, guid: f783ea1e4b2024d33933a42d8ab1ca47, type: 2}

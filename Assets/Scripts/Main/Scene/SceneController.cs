@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
-using BBX.Library.EventManagement;
 using BBX.Main.Game;
+using BBX.Library.EventManagement;
+using BBX.Main.Scene.Interfaces;
 
 namespace BBX.Main.Scene
 {
@@ -23,9 +24,9 @@ namespace BBX.Main.Scene
         }
         
 
-        public IEnumerator LoadScene(SceneReference scene)
+        public IEnumerator LoadScene(ISceneReference scene)
         {
-            _gameState.LoadingState.Value = GameState.LoadingStates.Idle;
+            _gameState.LoadingState.Value = GameState.LoadingStates.Loading;
 
             yield return _transition.Show();
             

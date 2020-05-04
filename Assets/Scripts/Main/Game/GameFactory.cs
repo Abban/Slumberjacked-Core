@@ -11,12 +11,11 @@ namespace BBX.Main.Game
     public class GameFactory : ScriptableObject
     {
         [SerializeField] private GameSettings settings = null;
+        [SerializeField] private SaveGame saveGame = null;
         [SerializeField] private GameObject sceneTransitionPrefab = null; 
         [SerializeField] private EventBus gameEventBus = null;
         [SerializeField] private GameState gameState = null; 
         [SerializeField] private StateBroker gameStateBroker = null;
-        [SerializeField] private GameStructureRegistry gameStructureRegistry = null;
-        [SerializeField] private SaveController.Components saveComponents = null;
 
         private MonoBehaviour _coroutineRunner;
 
@@ -29,7 +28,6 @@ namespace BBX.Main.Game
             gameEventBus.Initialise();
             gameStateBroker.Initialise();
             
-            gameStructureRegistry.Initialise();
             SaveController.Initialise();
         }
 
@@ -102,7 +100,7 @@ namespace BBX.Main.Game
         /// <summary>
         /// This handles save games
         /// </summary>
-        private IDataRepository<Save.Models.GameModel> _dataRepository;
+        private IDataRepository<SaveGame.SaveData> _dataRepository;
         private SaveController _saveController;
         private SaveController SaveController
         {
@@ -116,11 +114,10 @@ namespace BBX.Main.Game
                 if (_saveController == null)
                 {
                     _saveController = new SaveController(
-                        saveComponents,
+                        saveGame,
                         gameEventBus,
-                        _dataRepository,
-                        gameStructureRegistry.GetWorlds(),
-                        gameStructureRegistry.GetLevels());
+                        _dataRepository
+                    );
                 }
 
                 return _saveController;

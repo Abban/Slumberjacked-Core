@@ -5,7 +5,8 @@
         "UnityEditor.TestRunner",
         "Unity.BBX.Library.EventBus",
         "Unity.BBX.Library.StateObserver",
-        "Scripts"
+        "Scripts",
+        "TestResources"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

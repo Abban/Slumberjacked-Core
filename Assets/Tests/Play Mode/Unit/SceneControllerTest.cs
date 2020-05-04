@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using BBX.Main.Scene;
-using BBX.Library.EventManagement;
 using BBX.Main.Game;
+using BBX.TestMocks;
 using BBX.Utility;
 
 namespace Play.Unit.Game
@@ -30,9 +30,9 @@ namespace Play.Unit.Game
             _stateBroker.Initialise();
 
             _sceneController = new SceneController(
-                new SceneTransition(),
+                new MockSceneTransition(),
                 _gameState,
-                new EventBus()
+                new MockEventBus()
             );
         }
 
@@ -87,38 +87,6 @@ namespace Play.Unit.Game
             yield return _sceneController.LoadScene(sceneToLoad);
 
             Assert.That(counter == 0);
-        }
-
-
-        private class EventBus : IEventBus
-        {
-            public void Subscribe<T>(Action<T> subscriber) where T : IEvent
-            {
-            }
-
-            public void Unsubscribe<T>(Action<T> subscriber) where T : IEvent
-            {
-            }
-
-            public void Fire<T>(T payload) where T : IEvent
-            {
-            }
-        }
-
-
-        private class SceneTransition : ISceneTransition
-        {
-            public bool IsVisible { get; } = false;
-
-            public IEnumerator Show()
-            {
-                yield return null;
-            }
-
-            public IEnumerator Hide()
-            {
-                yield return null;
-            }
         }
     }
 }

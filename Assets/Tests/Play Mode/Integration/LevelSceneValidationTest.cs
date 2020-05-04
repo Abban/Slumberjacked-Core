@@ -1,10 +1,11 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using NUnit.Framework;
-using BBX.Main.Game;
 using BBX.Main.Level;
+using BBX.Main.Save.Models;
 
 namespace Play.Unit.Game
 {
@@ -21,9 +22,12 @@ namespace Play.Unit.Game
         [UnityTest]
         public IEnumerator AllLevelScenesAreSetupCorrectly()
         {
-            var gameStructureRegistry = Resources.Load<GameStructureRegistry>("Settings/Game/GameStructureRegistry");
+            var saveGame = Resources.Load<SaveGame>("Settings/Content/SaveGame");
+
+            var levels = saveGame.ContentPacks.SelectMany(pack => pack.Worlds)
+                .SelectMany(world => world.Levels);
             
-            foreach (var level in gameStructureRegistry.Levels)
+            foreach (var level in levels)
             {
                 yield return SceneManager.LoadSceneAsync(level.SceneName, LoadSceneMode.Single);
                 
