@@ -1,7 +1,9 @@
-namespace Actor.Interfaces
+using UnityEngine;
+
+namespace BBX.Actor.Interfaces
 {
-    public interface IActor
+    public interface IActor: IInteractable, IPushable, IResetable
     {
-        
+        Vector2Int Position { get; }
     }
 }

@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6386320787e42ccb4dc2c2573bfb6d1, type: 3}
   m_Name: LevelFactory
   m_EditorClassIdentifier: 
+  levelState: {fileID: 11400000, guid: 9405865e8a6234e36a288e9a848e4073, type: 2}
+  levelStateBroker: {fileID: 11400000, guid: d3e96e3f523274fb89ed118362cd8fff, type: 2}
+  board: {fileID: 11400000, guid: e8de3c65c8b164b7ba4ac71df5ddc24d, type: 2}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level_01
   m_EditorClassIdentifier: 
   saveData:
-    guid: 
     locked: 0
-  guid: 
+    guid: 62d1dfc6-800e-42d3-94b6-9d07f0b05195
+  guid: 62d1dfc6-800e-42d3-94b6-9d07f0b05195
   levelName: Level 01
   scene: {fileID: 102900000, guid: 6fe806167b3aa4352a8276cd26742c6d, type: 3}

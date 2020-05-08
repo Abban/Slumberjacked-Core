@@ -1,11 +1,19 @@
 using UnityEngine;
 
-namespace Actor.Model
+namespace BBX.Actor.Model
 {
     public class ActorModel
     {
-        private Vector2Int _position;
+        public Vector2Int StartPosition { get; }
 
+        public ActorModel(Vector2Int startPosition)
+        {
+            StartPosition = startPosition;
+            Position = startPosition;
+        }
+        
+        
+        private Vector2Int _position;
         public Vector2Int Position
         {
             get => _position;

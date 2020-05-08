@@ -1,7 +1,7 @@
 using System;
-using BBX.Board;
 using NUnit.Framework;
 using UnityEngine;
+using BBX.Main.Level.Utilities;
 
 namespace Unit.Board
 {

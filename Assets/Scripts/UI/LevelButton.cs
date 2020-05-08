@@ -17,7 +17,7 @@ namespace BBX.UI
         
         private void Awake()
         {
-            button.enabled = !level.Locked;
+            button.interactable = !level.Locked;
             buttonText.text = level.Name;
         }
 

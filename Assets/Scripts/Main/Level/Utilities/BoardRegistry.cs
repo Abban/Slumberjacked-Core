@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BBX.Utility;
 using UnityEngine;
 
-namespace BBX.Board
+namespace BBX.Main.Level.Utilities
 {
     public class BoardRegistry<T> where T : class
     {
@@ -32,12 +33,12 @@ namespace BBX.Board
         {
             if (Exists(at))
             {
-                throw new Exception( $"Tried to add {typeof(T)} at position where one already exists ({at})" );
+                ExceptionLogger.Exception($"Tried to add {typeof(T)} at position where one already exists ({at})");
             }
             
             if (Exists(item))
             {
-                throw new Exception( $"Tried to add same item of type {typeof(T)} to the registry twice!" );
+                ExceptionLogger.Exception($"Tried to add same item of type {typeof(T)} to the registry twice!");
             }
             
             _items.Add(at, item);
@@ -72,7 +73,7 @@ namespace BBX.Board
 
             if (itemRow.Value == null)
             {
-                throw new Exception( $"Tried to get position of {typeof(T)} but the object does not exist on the board" );
+                ExceptionLogger.Exception( $"Tried to get position of {typeof(T)} but the object does not exist on the board" );
             }
 
             return itemRow.Key;
@@ -90,7 +91,7 @@ namespace BBX.Board
             
             if (itemRow.Value == null)
             {
-                throw new Exception( $"Tried to get remove {typeof(T)} but the object does not exist on the board" );
+                ExceptionLogger.Exception( $"Tried to get remove {typeof(T)} but the object does not exist on the board" );
             }
             
             Remove(itemRow.Key);
@@ -106,7 +107,7 @@ namespace BBX.Board
         {
             if (!Exists(at))
             {
-                throw new Exception( $"Tried to remove item at {at} but no item exists in this position" );
+                ExceptionLogger.Exception( $"Tried to remove item at {at} but no item exists in this position" );
             }
             
             _items.Remove(at);
@@ -145,7 +146,7 @@ namespace BBX.Board
         {
             if (Exists(to))
             {
-                throw new Exception($"Tried to move an item to a place where another item exists {to}");
+                ExceptionLogger.Exception($"Tried to move an item to a place where another item exists {to}");
             }
             
             Remove(item);
