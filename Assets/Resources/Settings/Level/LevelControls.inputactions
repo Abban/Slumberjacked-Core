@@ -1,0 +1,33 @@
+{
+    "name": "LevelControls",
+    "maps": [
+        {
+            "name": "Level",
+            "id": "ba3f65b1-e14b-4ac9-9a1d-eab4ab5812a2",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "ea1cb62c-2da9-440f-b84a-0e9c416d0f28",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7b9d64a7-969c-4261-8045-a0c33d1fbb75",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

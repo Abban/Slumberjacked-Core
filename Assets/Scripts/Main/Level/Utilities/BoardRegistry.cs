@@ -1,23 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BBX.Utility;
 using UnityEngine;
+using BBX.Main.Level.Interfaces;
+using BBX.Utility;
 
 namespace BBX.Main.Level.Utilities
 {
-    public class BoardRegistry<T> where T : class
+    public class BoardRegistry<T> where T : IBoardItem
     {
-        private readonly Dictionary<Vector2Int, T> _items;
+        private readonly List<T> _items;
 
         
         public BoardRegistry()
         {
-            _items = new Dictionary<Vector2Int, T>();
+            _items = new List<T>();
         }
         
         
-        public BoardRegistry(Dictionary<Vector2Int, T> items)
+        public BoardRegistry(List<T> items)
         {
             _items = items;
         }
@@ -27,21 +28,20 @@ namespace BBX.Main.Level.Utilities
         /// Add a new item
         /// </summary>
         /// <param name="item"></param>
-        /// <param name="at"></param>
         /// <exception cref="Exception"></exception>
-        public void Add(T item, Vector2Int at)
+        public void Add(T item)
         {
-            if (Exists(at))
-            {
-                ExceptionLogger.Exception($"Tried to add {typeof(T)} at position where one already exists ({at})");
-            }
-            
             if (Exists(item))
             {
                 ExceptionLogger.Exception($"Tried to add same item of type {typeof(T)} to the registry twice!");
             }
             
-            _items.Add(at, item);
+            if (Exists(item.Position))
+            {
+                ExceptionLogger.Exception($"Tried to add {typeof(T)} at position where one already exists ({item.Position})");
+            }
+            
+            _items.Add(item);
         }
 
         
@@ -52,34 +52,10 @@ namespace BBX.Main.Level.Utilities
         /// <returns></returns>
         public T Get(Vector2Int at)
         {
-            if (Exists(at))
-            {
-                return _items[at];
-            }
-
-            return null;
-        }
-        
-        
-        /// <summary>
-        /// Get the position of an item
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        public Vector2Int GetPosition(T item)
-        {
-            var itemRow = _items.FirstOrDefault(x => x.Value == item);
-
-            if (itemRow.Value == null)
-            {
-                ExceptionLogger.Exception( $"Tried to get position of {typeof(T)} but the object does not exist on the board" );
-            }
-
-            return itemRow.Key;
+            return _items.FirstOrDefault(x => x.Position == at);
         }
 
-        
+
         /// <summary>
         /// Remove an item
         /// </summary>
@@ -87,14 +63,10 @@ namespace BBX.Main.Level.Utilities
         /// <exception cref="Exception"></exception>
         public void Remove(T item)
         {
-            var itemRow = _items.FirstOrDefault(x => x.Value == item);
-            
-            if (itemRow.Value == null)
+            if (!_items.Remove(item))
             {
                 ExceptionLogger.Exception( $"Tried to get remove {typeof(T)} but the object does not exist on the board" );
             }
-            
-            Remove(itemRow.Key);
         }
 
         
@@ -105,12 +77,14 @@ namespace BBX.Main.Level.Utilities
         /// <exception cref="Exception"></exception>
         public void Remove(Vector2Int at)
         {
-            if (!Exists(at))
+            var item = Get(at);
+            
+            if (item == null)
             {
                 ExceptionLogger.Exception( $"Tried to remove item at {at} but no item exists in this position" );
             }
             
-            _items.Remove(at);
+            _items.Remove(item);
         }
 
         
@@ -121,7 +95,7 @@ namespace BBX.Main.Level.Utilities
         /// <returns></returns>
         public bool Exists(Vector2Int at)
         {
-            return _items.ContainsKey(at);
+            return _items.FirstOrDefault(x => x.Position == at) != null;
         }
         
         
@@ -132,25 +106,7 @@ namespace BBX.Main.Level.Utilities
         /// <returns></returns>
         public bool Exists(T item)
         {
-            return _items.FirstOrDefault(x => x.Value == item).Value != null;
-        }
-
-        
-        /// <summary>
-        /// Move an item
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="to"></param>
-        /// <exception cref="Exception"></exception>
-        public void Move(T item, Vector2Int to)
-        {
-            if (Exists(to))
-            {
-                ExceptionLogger.Exception($"Tried to move an item to a place where another item exists {to}");
-            }
-            
-            Remove(item);
-            Add(item, to);
+            return _items.Contains(item);
         }
     }
 }

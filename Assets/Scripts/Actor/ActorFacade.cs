@@ -2,6 +2,7 @@ using UnityEngine;
 using BBX.Actor.Model;
 using BBX.Actor.Interfaces;
 using BBX.Library;
+using BBX.Main.Level;
 
 namespace BBX.Actor
 {
@@ -10,7 +11,8 @@ namespace BBX.Actor
         public Vector2Int Position => _controller.Position;
         
         [SerializeField] private ActorSettings settings = null;
-        
+        [SerializeField] private ActorStatuses statuses = null;
+
         private ActorFactory _factory;
         private ActorController _controller;
         private ActorModel _model;
@@ -20,6 +22,7 @@ namespace BBX.Actor
         {
             _factory = new ActorFactory(
                 settings,
+                statuses,
                 transform.position.ToInt2()
             );
             
@@ -41,10 +44,9 @@ namespace BBX.Actor
                 _model.Position.y
             );
         }
-
-
-        // TODO: Parcel these out into handlers
-        public PushState Interact(Vector2Int direction) => _controller.Interact(direction);
+        
+        
+        public PushState Interact(IActorStatuses actorStatuses, Vector2Int direction) => _controller.Interact(actorStatuses, direction);
         public void Push(Vector2Int direction) => _controller.Push(direction);
         public void Reset() => _controller.Reset();
     }

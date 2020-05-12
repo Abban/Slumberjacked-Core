@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using BBX.Main.Scene;
+using BBX.Main.Scene.Interfaces;
 
 namespace BBX.Main.Game
 {
@@ -18,9 +19,15 @@ namespace BBX.Main.Game
             [SerializeField] private SceneReference mainMenu = null;
             [SerializeField] private SceneReference shop = null;
 
-            public SceneReference DefaultScene => defaultScene;
-            public SceneReference MainMenu => mainMenu;
-            public SceneReference Shop => shop;
+            private ISceneReference _defaultSceneOverride = null;
+            public ISceneReference DefaultScene => _defaultSceneOverride ?? defaultScene;
+            public ISceneReference MainMenu => mainMenu;
+            public ISceneReference Shop => shop;
+            
+            public void SetDefaultSceneOverride(ISceneReference sceneReference)
+            {
+                _defaultSceneOverride = sceneReference;
+            }
         }
     }
 }

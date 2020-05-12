@@ -15,7 +15,7 @@ namespace BBX.Main.Level
             Resetting
         }
         
-        public IObservableStateProperty<GameplayStates> GameplayState { get; set; }
+        public IObservableStateProperty<GameplayStates> GameplayState { get; private set; }
 
         public void Initialise(
             IStatePropertyBroker stateBroker)

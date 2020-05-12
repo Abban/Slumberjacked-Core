@@ -1,4 +1,5 @@
 using System;
+using BBX.Main.Level.Interfaces;
 using NUnit.Framework;
 using UnityEngine;
 using BBX.Main.Level.Utilities;
@@ -8,18 +9,23 @@ namespace Unit.Board
     [TestFixture]
     public class BoardRegistryTest
     {
-        private class TestBoardItem
+        private class TestBoardItem : IBoardItem
         {
+            public Vector2Int Position { get; }
+
+            public TestBoardItem(Vector2Int position)
+            {
+                Position = position;
+            }
         }
         
         [Test]
         public void OnAddItem_AddsItem()
         {
-            var item = new TestBoardItem();
-            var position = Vector2Int.one;
+            var item = new TestBoardItem(Vector2Int.one);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
             
-            boardRegistry.Add(item, position);
+            boardRegistry.Add(item);
 
             Assert.That( boardRegistry.Exists(item) );
         }
@@ -28,53 +34,37 @@ namespace Unit.Board
         [Test]
         public void OnAddItem_AddsItemAtCorrectPosition()
         {
-            var item = new TestBoardItem();
-            var position = Vector2Int.one;
+            var item = new TestBoardItem(Vector2Int.one);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
             
-            boardRegistry.Add(item, position);
+            boardRegistry.Add(item);
 
-            Assert.That( boardRegistry.Get(position) == item );
+            Assert.That( boardRegistry.Get(Vector2Int.one) == item );
         }
 
         
         [Test]
         public void OnAddItemTwice_ThrowsException()
         {
-            var item = new TestBoardItem();
-            var position1 = Vector2Int.one;
-            var position2 = Vector2Int.down;
+            var item = new TestBoardItem(Vector2Int.one);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
             
-            boardRegistry.Add(item, position1);
+            boardRegistry.Add(item);
             
-            Assert.Throws<Exception>(() => boardRegistry.Add(item, position2));
-        }
-
-
-        [Test]
-        public void OnGetPosition_GetsCorrectPosition()
-        {
-            var item = new TestBoardItem();
-            var position = Vector2Int.one;
-            var boardRegistry = new BoardRegistry<TestBoardItem>();
-            
-            boardRegistry.Add(item, position);
-
-            Assert.That( boardRegistry.GetPosition(item) == position );
+            Assert.Throws<Exception>(() => boardRegistry.Add(item));
         }
 
 
         [Test]
         public void OnAddItemWhereItemExists_ThrowsException()
         {
-            var item = new TestBoardItem();
-            var position = Vector2Int.one;
+            var item = new TestBoardItem(Vector2Int.one);
+            var item2 = new TestBoardItem(Vector2Int.one);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
             
-            boardRegistry.Add(item, position);
+            boardRegistry.Add(item);
 
-            Assert.Throws<Exception>(() => boardRegistry.Add(item, position));
+            Assert.Throws<Exception>(() => boardRegistry.Add(item2));
         }
 
 
@@ -89,25 +79,15 @@ namespace Unit.Board
 
 
         [Test]
-        public void OnGetPositionWhereNoItemExists_ThrowsException()
-        {
-            var item = new TestBoardItem();
-            var boardRegistry = new BoardRegistry<TestBoardItem>();
-
-            Assert.Throws<Exception>(() => boardRegistry.GetPosition(item));
-        }
-
-
-        [Test]
         public void OnRemoveItem_RemovesItem()
         {
-            var item = new TestBoardItem();
             var position = Vector2Int.one;
+            var item = new TestBoardItem(position);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
             
-            boardRegistry.Add(item, position);
+            boardRegistry.Add(item);
 
-            Assert.That( boardRegistry.Get(position) == item );
+            Assert.That(boardRegistry.Get(position) == item);
             
             boardRegistry.Remove(item);
             
@@ -118,7 +98,7 @@ namespace Unit.Board
         [Test]
         public void OnRemoveItemWhereNoItemExists_ThrowsException()
         {
-            var item = new TestBoardItem();
+            var item = new TestBoardItem(Vector2Int.zero);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
 
             Assert.Throws<Exception>(() => boardRegistry.Remove(item));
@@ -128,11 +108,11 @@ namespace Unit.Board
         [Test]
         public void OnRemoveItemAtPosition_RemovesItem()
         {
-            var item = new TestBoardItem();
             var position = Vector2Int.one;
+            var item = new TestBoardItem(position);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
             
-            boardRegistry.Add(item, position);
+            boardRegistry.Add(item);
 
             Assert.That( boardRegistry.Get(position) == item );
             
@@ -149,38 +129,6 @@ namespace Unit.Board
             var boardRegistry = new BoardRegistry<TestBoardItem>();
 
             Assert.Throws<Exception>(() => boardRegistry.Remove(position));
-        }
-
-
-        [Test]
-        public void OnMoveItem_MovesItem()
-        {
-            var item = new TestBoardItem();
-            var fromPosition = Vector2Int.one;
-            var toPosition = Vector2Int.down;
-            var boardRegistry = new BoardRegistry<TestBoardItem>();
-            
-            boardRegistry.Add(item, fromPosition);
-            boardRegistry.Move(item, toPosition);
-            
-            Assert.That(boardRegistry.Get(fromPosition) == null);
-            Assert.That( boardRegistry.Get(toPosition) == item );
-        }
-
-
-        [Test]
-        public void OnMoveItemToPositionWhereAnotherExists_ThrowsException()
-        {
-            var item1 = new TestBoardItem();
-            var item2 = new TestBoardItem();
-            var fromPosition = Vector2Int.one;
-            var toPosition = Vector2Int.down;
-            var boardRegistry = new BoardRegistry<TestBoardItem>();
-            
-            boardRegistry.Add(item1, fromPosition);
-            boardRegistry.Add(item2, toPosition);
-            
-            Assert.Throws<Exception>(() => boardRegistry.Move(item1, toPosition));
         }
     }
 }

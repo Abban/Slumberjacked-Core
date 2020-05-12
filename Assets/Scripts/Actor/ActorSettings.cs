@@ -11,9 +11,11 @@ namespace BBX.Actor
         [SerializeField] private ActorBrain brain = null;
         [SerializeField] private Board board = null;
         [SerializeField] private bool pushable = true;
+        [SerializeField] private LevelState levelState = null;
         
         public IActorBrain Brain => brain;
         public Board Board => board;
         public bool Pushable => pushable;
+        public LevelState LevelState => levelState;
     }
 }

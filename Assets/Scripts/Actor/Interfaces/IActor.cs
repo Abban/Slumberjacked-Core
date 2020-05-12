@@ -1,9 +1,8 @@
-using UnityEngine;
+using BBX.Main.Level.Interfaces;
 
 namespace BBX.Actor.Interfaces
 {
-    public interface IActor: IInteractable, IPushable, IResetable
+    public interface IActor: IBoardItem, IInteractable, IPushable, IResetable
     {
-        Vector2Int Position { get; }
     }
 }

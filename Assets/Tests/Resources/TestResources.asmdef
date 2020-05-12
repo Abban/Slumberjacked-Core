@@ -2,6 +2,7 @@
     "name": "TestResources",
     "references": [
         "GUID:b91c056e1c8ae41a689da3be780a1c01",
+        "GUID:5f684b4dfa58f4f4395223f1c7e634a1",
         "GUID:370c8edc46d0b4cf98afcdc8d9cbc8c8"
     ],
     "includePlatforms": [],

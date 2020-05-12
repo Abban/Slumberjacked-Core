@@ -1,3 +1,5 @@
+using System;
+using BBX.Utility;
 using UnityEngine;
 
 namespace BBX.Main.Level
@@ -6,12 +8,13 @@ namespace BBX.Main.Level
     {
         [SerializeField] private LevelFactory levelFactory = null;
         [SerializeField] private LevelSettings levelSettings = null;
-        
+
+
         private LevelController _levelController;
 
         private void Awake()
         {
-            levelFactory.Initialise(levelSettings);
+            levelFactory.Initialise(levelSettings, this);
             _levelController = levelFactory.LevelController;
             _levelController.Awake();
         }
@@ -21,6 +24,18 @@ namespace BBX.Main.Level
         {
             _levelController.Start();
             var player = levelFactory.Player;
+        }
+
+
+        private void OnEnable()
+        {
+            _levelController.OnEnable();
+        }
+
+
+        private void OnDisable()
+        {
+            _levelController.OnDisable();
         }
     }
 }

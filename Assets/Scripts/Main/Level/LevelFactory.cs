@@ -10,13 +10,18 @@ namespace BBX.Main.Level
         [SerializeField] private LevelState levelState = null;
         [SerializeField] private StateBroker levelStateBroker = null;
         [SerializeField] private Board board = null;
+        [SerializeField] private EventBus gameEventBus = null;
 
         private LevelSettings _settings;
+        private MonoBehaviour _coroutineRunner;
 
-        public void Initialise(LevelSettings settings)
+        public void Initialise(
+            LevelSettings settings,
+            MonoBehaviour coroutineRunner)
         {
             _settings = settings;
-
+            _coroutineRunner = coroutineRunner;
+            
             levelState.Initialise(levelStateBroker);
             levelStateBroker.Initialise();
         }
@@ -32,8 +37,11 @@ namespace BBX.Main.Level
                 {
                     _levelController = new LevelController(
                         levelState,
+                        _coroutineRunner,
                         levelStateBroker,
-                        board
+                        board,
+                        new LevelControls(),
+                        gameEventBus
                     );
                 }
 

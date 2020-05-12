@@ -11,6 +11,6 @@ namespace BBX.Actor.Interfaces
     
     public interface IInteractable
     {
-        PushState Interact(Vector2Int direction);
+        PushState Interact(IActorStatuses statuses, Vector2Int direction);
     }
 }

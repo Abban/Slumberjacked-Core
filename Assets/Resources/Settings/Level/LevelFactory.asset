@@ -15,3 +15,4 @@ MonoBehaviour:
   levelState: {fileID: 11400000, guid: 9405865e8a6234e36a288e9a848e4073, type: 2}
   levelStateBroker: {fileID: 11400000, guid: d3e96e3f523274fb89ed118362cd8fff, type: 2}
   board: {fileID: 11400000, guid: e8de3c65c8b164b7ba4ac71df5ddc24d, type: 2}
+  gameEventBus: {fileID: 11400000, guid: ea1df1977e0d04a58bd941cf6050c3f7, type: 2}

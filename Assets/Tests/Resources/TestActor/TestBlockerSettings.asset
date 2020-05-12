@@ -15,3 +15,4 @@ MonoBehaviour:
   brain: {fileID: 11400000, guid: 3c6abc7f0b5854862b667ae2a5952f26, type: 2}
   board: {fileID: 11400000, guid: c678ab3a16edd436c9d5ed2746816f14, type: 2}
   pushable: 0
+  levelState: {fileID: 11400000, guid: 0604dffbbf2364816a5a4c79a0bbcb98, type: 2}

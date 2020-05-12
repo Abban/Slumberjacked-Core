@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f8711706038b74d53abb2f04a1ce2ee7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
+  generateWrapperCode: 1
+  wrapperCodePath: Assets/Scripts/Main/Level/LevelControls.cs
+  wrapperClassName: 
+  wrapperCodeNamespace: BBX.Main.Level

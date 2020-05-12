@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: d5bca793ac6964a1ea99444133de0fd1, type: 2}
   board: {fileID: 11400000, guid: c678ab3a16edd436c9d5ed2746816f14, type: 2}
+  pushable: 1
+  levelState: {fileID: 11400000, guid: 0604dffbbf2364816a5a4c79a0bbcb98, type: 2}

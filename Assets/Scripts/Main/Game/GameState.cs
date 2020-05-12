@@ -13,8 +13,8 @@ namespace BBX.Main.Game
             Loading
         }
 
-        public IObservableStateProperty<ISceneReference> CurrentScene { get; set; }
-        public IObservableStateProperty<LoadingStates> LoadingState { get; set; }
+        public IObservableStateProperty<ISceneReference> CurrentScene { get; private set; }
+        public IObservableStateProperty<LoadingStates> LoadingState { get; private set; }
 
         public void Initialise(
             IStatePropertyBroker stateBroker)
