@@ -20,7 +20,7 @@ namespace Integration.Actors
         private ActorSettings _blockerSettings;
         private ActorSettings _pushableSettings;
 
-        
+
         [SetUp]
         public void SetUp()
         {
@@ -35,43 +35,29 @@ namespace Integration.Actors
             levelState.Initialise(new ObservableStateBroker());
             levelState.GameplayState.Value = LevelState.GameplayStates.Playing;
         }
-        
-        
+
+
         [Test]
         public void OnStart_InitialisesBrain()
         {
-            _board.Initialise();
-
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
-            
-            actorController.Start();
-            
+
+            _board.Initialise(new List<IActor> {actorController});
+
             Assert.That(_actorBrain.Initialised);
             Assert.That(_actorBrain.Enabled);
         }
-        
-        
-        [Test]
-        public void OnStart_RegistersWithBoard()
-        {
-            _board.Initialise();
-            
-            var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
-            actorController.Start();
-            
-            Assert.That(_board.Exists(actorController));
-        }
-        
-        
+
+
         [Test]
         public void OnDispose_DisablesBrain()
         {
-            _board.Initialise();
-            
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
-            actorController.Start();
+
+            _board.Initialise(new List<IActor> {actorController});
+
             actorController.Dispose();
-            
+
             Assert.That(!_actorBrain.Enabled);
         }
 
@@ -79,100 +65,90 @@ namespace Integration.Actors
         [Test]
         public void OnMove_MovesToPosition()
         {
-            _board.Initialise();
-            
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
-            actorController.Start();
-            
+
+            _board.Initialise(new List<IActor> {actorController});
+
             _actorBrain.Callback.Invoke(Vector2Int.down);
 
             Assert.That(actorController.Position == Vector2Int.down);
         }
-        
-        
+
+
         [Test]
         public void OnInteractWithPushable_PerformsPush()
         {
-            _board.Initialise();
-            
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
             var pushableActor = new ActorFactory(_pushableSettings, _actorStatuses, Vector2Int.right).Controller;
-            
-            actorController.Start();
-            pushableActor.Start();
-            
+
+            _board.Initialise(new List<IActor> {actorController, pushableActor});
+
             _actorBrain.Callback.Invoke(Vector2Int.right);
 
             Assert.That(actorController.Position == Vector2Int.right);
             Assert.That(pushableActor.Position == Vector2Int.right + Vector2Int.right);
         }
-        
-        
+
+
         [Test]
         public void OnMove_WhenBlocked_DoesNotMove()
         {
-            _board.Initialise(new List<Vector2Int>{ Vector2Int.right });
-            
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
-            
-            actorController.Start();
-            
+
+            _board.Initialise(
+                new List<IActor> {actorController},
+                new List<Vector2Int> {Vector2Int.right}
+            );
+
             _actorBrain.Callback.Invoke(Vector2Int.right);
-            
+
             Assert.That(actorController.Position == Vector2Int.zero);
         }
-        
-        
+
+
         [Test]
         public void OnMove_WhenBlockedByActor_DoesNotMove()
         {
-            _board.Initialise();
-            
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
             var blockerActor = new ActorFactory(_blockerSettings, _actorStatuses, Vector2Int.right).Controller;
-            
-            actorController.Start();
-            blockerActor.Start();
-            
-           _actorBrain.Callback.Invoke(Vector2Int.right);
 
-           Assert.That(actorController.Position == Vector2Int.zero);
+            _board.Initialise(new List<IActor> {actorController, blockerActor});
+
+            _actorBrain.Callback.Invoke(Vector2Int.right);
+
+            Assert.That(actorController.Position == Vector2Int.zero);
         }
 
 
         [Test]
         public void OnInteract_WhenPushableButBlocked_Blocks()
         {
-            _board.Initialise(new List<Vector2Int>{ Vector2Int.right * 2 });
-            
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
             var pushableActor = new ActorFactory(_pushableSettings, _actorStatuses, Vector2Int.right).Controller;
-            
-            actorController.Start();
-            pushableActor.Start();
-            
+
+            _board.Initialise(
+                new List<IActor> {actorController, pushableActor},
+                new List<Vector2Int> {Vector2Int.right * 2}
+            );
+
             _actorBrain.Callback.Invoke(Vector2Int.right);
-            
+
             Assert.That(actorController.Position == Vector2Int.zero);
             Assert.That(pushableActor.Position == Vector2Int.right);
         }
-        
-        
+
+
         [Test]
         public void OnReset_ReturnsToOriginalState()
         {
-            _board.Initialise();
-            
             var actorController = new ActorFactory(_actorSettings, _actorStatuses, Vector2Int.zero).Controller;
-            actorController.Start();
-            
+
+            _board.Initialise(new List<IActor> {actorController});
+
             _actorBrain.Callback.Invoke(Vector2Int.down);
-            
             Assert.That(actorController.Position == Vector2Int.down);
-            
-            _board.Initialise();
+
             actorController.Reset();
-            
             Assert.That(actorController.Position == Vector2Int.zero);
         }
     }

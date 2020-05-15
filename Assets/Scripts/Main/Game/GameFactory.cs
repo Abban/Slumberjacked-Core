@@ -1,7 +1,5 @@
 using UnityEngine;
 using BBX.Main.Save;
-using BBX.Main.Save.Interfaces;
-using BBX.Main.Save.Models;
 using BBX.Main.Scene;
 using BBX.Utility;
 
@@ -11,7 +9,7 @@ namespace BBX.Main.Game
     public class GameFactory : ScriptableObject
     {
         [SerializeField] private GameSettings settings = null;
-        [SerializeField] private SaveGame saveGame = null;
+        [SerializeField] private SaveController saveController = null;
         [SerializeField] private GameObject sceneTransitionPrefab = null; 
         [SerializeField] private EventBus gameEventBus = null;
         [SerializeField] private GameState gameState = null; 
@@ -27,8 +25,7 @@ namespace BBX.Main.Game
             gameState.Initialise(gameStateBroker);
             gameEventBus.Initialise();
             gameStateBroker.Initialise();
-            
-            SaveController.Initialise();
+            saveController.Initialise(gameEventBus, new SaveDataRepository());
         }
 
         
@@ -93,34 +90,6 @@ namespace BBX.Main.Game
                 }
 
                 return _sceneController;
-            }
-        }
-
-        
-        /// <summary>
-        /// This handles save games
-        /// </summary>
-        private IDataRepository<SaveGame.SaveData> _dataRepository;
-        private SaveController _saveController;
-        private SaveController SaveController
-        {
-            get
-            {
-                if (_dataRepository == null)
-                {
-                    _dataRepository = new SaveDataRepository();
-                }
-                
-                if (_saveController == null)
-                {
-                    _saveController = new SaveController(
-                        saveGame,
-                        gameEventBus,
-                        _dataRepository
-                    );
-                }
-
-                return _saveController;
             }
         }
     }

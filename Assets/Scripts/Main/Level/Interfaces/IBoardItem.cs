@@ -5,5 +5,7 @@ namespace BBX.Main.Level.Interfaces
     public interface IBoardItem
     {
         Vector2Int Position { get; }
+        void Initialise();
+        void Reset();
     }
 }

@@ -1,23 +1,23 @@
-using UnityEngine;
-using BBX.Utility;
 using BBX.Main.Level;
+using BBX.Utility;
+using UnityEngine;
 
 namespace BBX.UI
 {
-    public class Pause : Modal
+    public class LevelModal : Modal
     {
+        [SerializeField] private LevelState.GameplayStates visibleInState = LevelState.GameplayStates.Starting;
         [SerializeField] private LevelState levelState = null;
         [SerializeField] private EventBus gameEventBus = null;
         
-        private LevelState.GameplayStates _lastState;
         
         private void Awake()
         {
-            gameEventBus.Subscribe<LevelStartEvent>(OnLevelStart);
+            gameEventBus.Subscribe<LevelInitialisedEvent>(OnLevelInitialised);
         }
 
 
-        private void OnLevelStart(LevelStartEvent levelStartEvent)
+        private void OnLevelInitialised(LevelInitialisedEvent levelInitialisedEvent)
         {
             levelState.GameplayState.Action += OnLevelStateChange;
         }
@@ -26,22 +26,20 @@ namespace BBX.UI
         private void OnDisable()
         {
             levelState.GameplayState.Action -= OnLevelStateChange;
-            gameEventBus.Unsubscribe<LevelStartEvent>(OnLevelStart);
+            gameEventBus.Unsubscribe<LevelInitialisedEvent>(OnLevelInitialised);
         }
 
         
         private void OnLevelStateChange()
         {
-            if (levelState.GameplayState.Value == LevelState.GameplayStates.Paused)
+            if (levelState.GameplayState.Value == visibleInState)
             {
                 Show();
             }
-            else if (_lastState == LevelState.GameplayStates.Paused)
+            else
             {
                 Hide();
             }
-
-            _lastState = levelState.GameplayState.Value;
         }
     }
 }

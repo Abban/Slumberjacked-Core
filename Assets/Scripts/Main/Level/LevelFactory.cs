@@ -1,5 +1,7 @@
 using UnityEngine;
 using BBX.Actor.Interfaces;
+using BBX.Main.Level.Handlers;
+using BBX.Main.Save;
 using BBX.Utility;
 
 namespace BBX.Main.Level
@@ -11,6 +13,7 @@ namespace BBX.Main.Level
         [SerializeField] private StateBroker levelStateBroker = null;
         [SerializeField] private Board board = null;
         [SerializeField] private EventBus gameEventBus = null;
+        [SerializeField] private SaveController saveController = null;
 
         private LevelSettings _settings;
         private MonoBehaviour _coroutineRunner;
@@ -36,12 +39,14 @@ namespace BBX.Main.Level
                 if (_levelController == null)
                 {
                     _levelController = new LevelController(
-                        levelState,
                         _coroutineRunner,
-                        levelStateBroker,
-                        board,
                         new LevelControls(),
-                        gameEventBus
+                        gameEventBus,
+                        StartHandler,
+                        PauseHandler,
+                        DeathHandler,
+                        ResetHandler,
+                        FinishHandler
                     );
                 }
 
@@ -49,16 +54,120 @@ namespace BBX.Main.Level
             }
         }
 
+        
+        private StartHandler _startHandler;
+        private StartHandler StartHandler
+        {
+            get
+            {
+                if (_startHandler == null)
+                {
+                    _startHandler = new StartHandler(
+                        levelState,
+                        levelStateBroker,
+                        gameEventBus,
+                        board,
+                        _settings,
+                        Player
+                    );
+                }
+
+                return _startHandler;
+            }
+        }
+
+
+        private PauseHandler _pauseHandler;
+        private PauseHandler PauseHandler
+        {
+            get
+            {
+                if (_pauseHandler == null)
+                {
+                    _pauseHandler = new PauseHandler(
+                        levelState,
+                        levelStateBroker,
+                        gameEventBus
+                    );
+                }
+
+                return _pauseHandler;
+            }
+        }
+
+
+        private DeathHandler _deathHandler;
+        private DeathHandler DeathHandler
+        {
+            get
+            {
+                if (_deathHandler == null)
+                {
+                    _deathHandler = new DeathHandler(
+                        levelState,
+                        levelStateBroker,
+                        gameEventBus
+                    );
+                }
+
+                return _deathHandler;
+            }
+        }
+        
+        
+        private ResetHandler _resetHandler;
+        private ResetHandler ResetHandler
+        {
+            get
+            {
+                if (_resetHandler == null)
+                {
+                    _resetHandler = new ResetHandler(
+                        levelState,
+                        levelStateBroker,
+                        gameEventBus,
+                        board
+                    );
+                }
+
+                return _resetHandler;
+            }
+        }
+        
+        
+        private FinishHandler _finishHandler;
+        private FinishHandler FinishHandler
+        {
+            get
+            {
+                if (_finishHandler == null)
+                {
+                    _finishHandler = new FinishHandler(
+                        levelState,
+                        levelStateBroker,
+                        gameEventBus,
+                        _settings,
+                        saveController
+                    );
+                }
+
+                return _finishHandler;
+            }
+        }
+
 
         private IActor _player;
-
-        public IActor Player
+        private IActor Player
         {
             get
             {
                 if (_player == null)
                 {
-                    var player = Instantiate(_settings.PlayerPrefab, _settings.PlayerSpawnPoint);
+                    var player = Instantiate(
+                        _settings.PlayerPrefab,
+                        _settings.PlayerSpawnPoint
+                    );
+                    
                     _player = player.GetComponent<IActor>();
                 }
 

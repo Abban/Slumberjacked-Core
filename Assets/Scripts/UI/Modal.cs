@@ -5,6 +5,7 @@ namespace BBX.UI
     public class Modal : MonoBehaviour
     {
         [SerializeField] private bool hideOnStart = true;
+        [SerializeField] private bool showOnStart = true;
         [SerializeField] private CanvasGroup canvasGroup = null;
 
         protected void Start()
@@ -12,6 +13,11 @@ namespace BBX.UI
             if (hideOnStart)
             {
                 Hide();
+            }
+            
+            if (showOnStart)
+            {
+                Show();
             }
         }
 

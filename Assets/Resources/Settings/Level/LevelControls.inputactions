@@ -11,7 +11,15 @@
                     "id": "ea1cb62c-2da9-440f-b84a-0e9c416d0f28",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "a1defa2f-4c2a-449c-ba3a-728399304791",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -19,10 +27,21 @@
                     "name": "",
                     "id": "7b9d64a7-969c-4261-8045-a0c33d1fbb75",
                     "path": "<Keyboard>/escape",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a48c2f7-7abf-4537-a247-940c22c81383",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

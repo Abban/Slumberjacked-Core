@@ -23,7 +23,6 @@ namespace BBX.Main.Level
         private void Start()
         {
             _levelController.Start();
-            var player = levelFactory.Player;
         }
 
 

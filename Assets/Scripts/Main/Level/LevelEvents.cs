@@ -2,9 +2,33 @@ using BBX.Library.EventManagement;
 
 namespace BBX.Main.Level
 {
-    public class LevelStartEvent : IEvent
+    public class LevelInitialisedEvent : IEvent
     {
-        public LevelStartEvent()
+        public LevelInitialisedEvent()
+        {
+        }
+    }
+    
+    
+    public class LevelResetEvent : IEvent
+    {
+        public LevelResetEvent()
+        {
+        }
+    }
+    
+    
+    public class LevelDieEvent : IEvent
+    {
+        public LevelDieEvent()
+        {
+        }
+    }
+    
+    
+    public class LevelFinishEvent : IEvent
+    {
+        public LevelFinishEvent()
         {
         }
     }

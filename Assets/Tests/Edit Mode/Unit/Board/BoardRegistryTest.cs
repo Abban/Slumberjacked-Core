@@ -12,10 +12,24 @@ namespace Unit.Board
         private class TestBoardItem : IBoardItem
         {
             public Vector2Int Position { get; }
-
+            
+            public bool Initialised { get; private set; }
+            
+            public bool HasReset { get; private set; }
+            
             public TestBoardItem(Vector2Int position)
             {
                 Position = position;
+            }
+            
+            public void Initialise()
+            {
+                Initialised = true;
+            }
+            
+            public void Reset()
+            {
+                HasReset = true;
             }
         }
         
@@ -56,7 +70,7 @@ namespace Unit.Board
 
 
         [Test]
-        public void OnAddItemWhereItemExists_ThrowsException()
+        public void OnAddItem_IfItemAlreadyExistsAtPosition_ThrowsException()
         {
             var item = new TestBoardItem(Vector2Int.one);
             var item2 = new TestBoardItem(Vector2Int.one);
@@ -69,7 +83,7 @@ namespace Unit.Board
 
 
         [Test]
-        public void OnGetItemWhereNoItemExists_ReturnsNull()
+        public void OnGetItem_WhenNoItemExists_ReturnsNull()
         {
             var position = Vector2Int.one;
             var boardRegistry = new BoardRegistry<TestBoardItem>();
@@ -96,7 +110,7 @@ namespace Unit.Board
 
 
         [Test]
-        public void OnRemoveItemWhereNoItemExists_ThrowsException()
+        public void OnRemoveItem_WhenNoItemExists_ThrowsException()
         {
             var item = new TestBoardItem(Vector2Int.zero);
             var boardRegistry = new BoardRegistry<TestBoardItem>();
@@ -123,7 +137,7 @@ namespace Unit.Board
 
 
         [Test]
-        public void OnRemoveItemAtPositionWhereNoItemExists_ThrowsException()
+        public void OnRemoveItemAtPosition_WhenNoItemExists_ThrowsException()
         {
             var position = Vector2Int.one;
             var boardRegistry = new BoardRegistry<TestBoardItem>();

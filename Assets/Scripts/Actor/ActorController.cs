@@ -34,12 +34,11 @@ namespace BBX.Actor
         }
 
 
-        public void Start()
+        public void Initialise() 
         {
             _settings.Brain.Initialise();
             _settings.Brain.SetMovementCallback(_moveHandler.OnMove);
             _settings.Brain.Enable();
-            _settings.Board.Add(this);
         }
 
 
@@ -51,6 +50,7 @@ namespace BBX.Actor
         
         public PushState Interact(IActorStatuses statuses, Vector2Int direction) => _interactHandler.Interact(statuses, direction);
         public void Push(Vector2Int direction) => _pushHandler.Push(direction);
+
         public void Reset() => _resetHandler.Reset();
     }
 }

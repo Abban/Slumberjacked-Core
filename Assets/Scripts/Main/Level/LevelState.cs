@@ -12,6 +12,7 @@ namespace BBX.Main.Level
             Playing,
             Paused,
             Finishing,
+            Died,
             Resetting
         }
         

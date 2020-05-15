@@ -12,6 +12,8 @@ namespace BBX.Editor
             
             var content = (SaveGame)target;
             
+            GUILayout.Space(20);
+            
             if(GUILayout.Button("Generate GUIDs"))
             {
                 content.GenerateGuids();

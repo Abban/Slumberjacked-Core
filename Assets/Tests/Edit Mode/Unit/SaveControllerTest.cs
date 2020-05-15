@@ -18,12 +18,10 @@ namespace Unit.Game
         {
             _testDataRepository = new MockDataRepository();
             _saveGame = Resources.Load<SaveGame>("TestSave/TestSaveGame");
-
-            var gameEventBus = new MockEventBus();
-
-            _saveController = new SaveController(
-                _saveGame,
-                gameEventBus,
+            _saveController = Resources.Load<SaveController>("TestSave/TestSaveController");
+            
+            _saveController.Initialise(
+                new MockEventBus(),
                 _testDataRepository
             );
         }
@@ -38,8 +36,6 @@ namespace Unit.Game
         [Test]
         public void OnInitialise_IfSaveDoesNotExist_CreatesDefaultSave()
         {
-            _saveController.Initialise();
-            
             Assert.NotNull(_testDataRepository.FileName);
             Assert.NotNull(_testDataRepository.Data);
             Assert.That(_saveGame.FileName == _testDataRepository.FileName);
@@ -49,8 +45,6 @@ namespace Unit.Game
         [Test]
         public void OnInitialise_IfSaveDoesNotExist_ImportsDefaultStructure()
         {
-            _saveController.Initialise();
-            
             Assert.AreEqual(JsonUtility.ToJson(_saveGame.Save), _testDataRepository.Data);
         }
 
@@ -58,8 +52,6 @@ namespace Unit.Game
         [Test]
         public void OnSave_OverwritesSave()
         {
-            _saveController.Initialise();
-            
             Assert.That(!_saveGame.ContentPacks[0].Save.Locked);
             
             _saveGame.ContentPacks[0].Save.Locked = true;
@@ -72,8 +64,6 @@ namespace Unit.Game
         [Test]
         public void OnLoad_LoadsSave()
         {
-            _saveController.Initialise();
-
             Assert.That(!_saveGame.ContentPacks[0].Save.Locked);
 
             _saveGame.ContentPacks[0].Save.Locked = true;
@@ -86,8 +76,6 @@ namespace Unit.Game
         [Test]
         public void OnDelete_DeletesSave()
         {
-            _saveController.Initialise();
-            
             Assert.NotNull(_testDataRepository.FileName);
             Assert.NotNull(_testDataRepository.Data);
             

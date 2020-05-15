@@ -9,18 +9,18 @@ namespace BBX.Main.Level.Utilities
 {
     public class BoardRegistry<T> where T : IBoardItem
     {
-        private readonly List<T> _items;
+        public List<T> Items { get; }
 
-        
+
         public BoardRegistry()
         {
-            _items = new List<T>();
+            Items = new List<T>();
         }
         
         
         public BoardRegistry(List<T> items)
         {
-            _items = items;
+            Items = items;
         }
 
         
@@ -41,7 +41,7 @@ namespace BBX.Main.Level.Utilities
                 ExceptionLogger.Exception($"Tried to add {typeof(T)} at position where one already exists ({item.Position})");
             }
             
-            _items.Add(item);
+            Items.Add(item);
         }
 
         
@@ -52,7 +52,7 @@ namespace BBX.Main.Level.Utilities
         /// <returns></returns>
         public T Get(Vector2Int at)
         {
-            return _items.FirstOrDefault(x => x.Position == at);
+            return Items.FirstOrDefault(x => x.Position == at);
         }
 
 
@@ -63,7 +63,7 @@ namespace BBX.Main.Level.Utilities
         /// <exception cref="Exception"></exception>
         public void Remove(T item)
         {
-            if (!_items.Remove(item))
+            if (!Items.Remove(item))
             {
                 ExceptionLogger.Exception( $"Tried to get remove {typeof(T)} but the object does not exist on the board" );
             }
@@ -84,7 +84,7 @@ namespace BBX.Main.Level.Utilities
                 ExceptionLogger.Exception( $"Tried to remove item at {at} but no item exists in this position" );
             }
             
-            _items.Remove(item);
+            Items.Remove(item);
         }
 
         
@@ -95,7 +95,7 @@ namespace BBX.Main.Level.Utilities
         /// <returns></returns>
         public bool Exists(Vector2Int at)
         {
-            return _items.FirstOrDefault(x => x.Position == at) != null;
+            return Items.FirstOrDefault(x => x.Position == at) != null;
         }
         
         
@@ -106,7 +106,7 @@ namespace BBX.Main.Level.Utilities
         /// <returns></returns>
         public bool Exists(T item)
         {
-            return _items.Contains(item);
+            return Items.Contains(item);
         }
     }
 }

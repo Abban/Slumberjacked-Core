@@ -1,5 +1,5 @@
-using BBX.Main.Scene.Interfaces;
 using UnityEngine;
+using BBX.Main.Scene.Interfaces;
 
 namespace BBX.Utility
 {

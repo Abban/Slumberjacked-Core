@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameFactory
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 36fdce56f8fa14a1ba622dab91c072f7, type: 2}
-  saveGame: {fileID: 11400000, guid: d5537d3af25144408a51cf7f6335c004, type: 2}
+  saveController: {fileID: 11400000, guid: 9b0ed047e3215431abf2c765dcaa1874, type: 2}
   sceneTransitionPrefab: {fileID: 6175337765214906025, guid: caab1a67e806c49e29ad8ca982d772f2,
     type: 3}
   gameEventBus: {fileID: 11400000, guid: ea1df1977e0d04a58bd941cf6050c3f7, type: 2}

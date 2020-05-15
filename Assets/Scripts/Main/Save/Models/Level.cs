@@ -13,6 +13,10 @@ namespace BBX.Main.Save.Models
         [SerializeField] private string levelName = string.Empty;
         [SerializeField] private SceneAsset scene = null;
         
+        [Header("Unlocks")]
+        [SerializeField] private Level levelToUnlock = null;
+        [SerializeField] private World worldToUnlock = null;
+        
         public SaveData Save
         {
             get => saveData;
@@ -21,11 +25,17 @@ namespace BBX.Main.Save.Models
         
         public SceneAsset Scene => scene;
         public string SceneName => scene.name;
-        
         public string Guid => guid;
         public string Name => levelName;
-        public bool Locked => Save.Locked;
 
+        public bool Locked
+        {
+            get => Save.Locked;
+            set => Save.Locked = value;
+        }
+        public Level LevelToUnlock => levelToUnlock;
+        public World WorldToUnlock => worldToUnlock;
+        
         public void GenerateGuid()
         {
             Save.GenerateGuid();

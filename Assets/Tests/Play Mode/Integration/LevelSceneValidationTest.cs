@@ -6,6 +6,7 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using BBX.Main.Level;
 using BBX.Main.Save.Models;
+using BBX.Utility;
 
 namespace Play.Unit.Game
 {
@@ -23,6 +24,8 @@ namespace Play.Unit.Game
         public IEnumerator AllLevelScenesAreSetupCorrectly()
         {
             var saveGame = Resources.Load<SaveGame>("Settings/Content/SaveGame");
+            var eventBus = Resources.Load<EventBus>("Settings/Game/GameEventBus");
+            eventBus.Initialise();
 
             var levels = saveGame.ContentPacks.SelectMany(pack => pack.Worlds)
                 .SelectMany(world => world.Levels);

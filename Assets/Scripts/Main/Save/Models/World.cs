@@ -32,14 +32,29 @@ namespace BBX.Main.Save.Models
         }
         
         public string Guid => guid;
-        public bool Locked => saveData.Locked;
+
+        public bool Locked
+        {
+            get => saveData.Locked;
+            set
+            {
+                saveData.Locked = value;
+                
+                if (value == false && levels.Count > 0)
+                {
+                    levels[0].Locked = false;
+                }
+            }
+        }
         public List<Level> Levels => levels;
         
         public void GenerateGuids()
         {
             saveData.GenerateGuid();
             guid = saveData.Guid;
-
+            
+            if(levels == null) return;
+            
             foreach (var level in levels)
             {
                 level.GenerateGuid();

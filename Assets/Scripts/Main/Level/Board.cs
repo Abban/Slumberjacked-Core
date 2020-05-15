@@ -10,31 +10,45 @@ namespace BBX.Main.Level
     public class Board : ScriptableObject
     {
         private BoardRegistry<IActor> _actors;
-        private List<Vector2Int> _walls;
+        private List<Vector2Int> _static;
 
         
-        public void Initialise()
+        public void Initialise(List<IActor> actors)
         {
-            _walls = new List<Vector2Int>();
-            _actors = new BoardRegistry<IActor>();
+            _actors = new BoardRegistry<IActor>(actors);
+            _static = new List<Vector2Int>();
+
+            foreach (var actor in _actors.Items)
+            {
+                actor.Initialise();
+            }
         }
         
         
-        public void Initialise(List<Vector2Int> walls)
+        public void Initialise(List<IActor> actors, List<Vector2Int> walls)
         {
-            _walls = walls;
-            _actors = new BoardRegistry<IActor>();
+            _actors = new BoardRegistry<IActor>(actors);
+            _static = walls;
         }
 
 
         public void Add(IActor actor)
         {
-            if (_walls.Contains(actor.Position))
+            if (_static.Contains(actor.Position))
             {
                 ExceptionLogger.Exception($"Tried to add an actor {actor} at a position where a wall exists ({actor.Position})");
             }
             
             _actors.Add(actor);
+        }
+
+
+        public void ResetActors()
+        {
+            foreach (var actor in _actors.Items)
+            {
+                actor.Reset();
+            }
         }
 
 
@@ -46,7 +60,7 @@ namespace BBX.Main.Level
 
         public bool HasWallAt(Vector2Int at)
         {
-            return _walls.Contains(at);
+            return _static.Contains(at);
         }
         
         

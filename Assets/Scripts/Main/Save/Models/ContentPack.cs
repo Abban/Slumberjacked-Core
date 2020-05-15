@@ -15,7 +15,12 @@ namespace BBX.Main.Save.Models
         [SerializeField] private List<World> worlds = null;
 
         public string Guid => guid;
-        public bool Locked => saveData.Locked;
+
+        public bool Locked
+        {
+            get => saveData.Locked;
+            set => saveData.Locked = value;
+        }
         public string PackName => packName;
         public string PackId => packId;
         

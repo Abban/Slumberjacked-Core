@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveData:
     locked: 0
-    guid: 62d1dfc6-800e-42d3-94b6-9d07f0b05195
-  guid: 62d1dfc6-800e-42d3-94b6-9d07f0b05195
+    guid: 59916d30-573c-4836-9a4e-97553e61e284
+  guid: 59916d30-573c-4836-9a4e-97553e61e284
   levelName: Level 01
   scene: {fileID: 102900000, guid: 6fe806167b3aa4352a8276cd26742c6d, type: 3}
+  levelToUnlock: {fileID: 11400000, guid: a670505588a73483f9dc61b034730b1e, type: 2}
+  worldToUnlock: {fileID: 11400000, guid: 545b9dde12d6144c196d4b9eb88562fb, type: 2}

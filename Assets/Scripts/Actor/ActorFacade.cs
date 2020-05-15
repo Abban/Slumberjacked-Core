@@ -2,7 +2,6 @@ using UnityEngine;
 using BBX.Actor.Model;
 using BBX.Actor.Interfaces;
 using BBX.Library;
-using BBX.Main.Level;
 
 namespace BBX.Actor
 {
@@ -31,12 +30,6 @@ namespace BBX.Actor
         }
 
 
-        private void Start()
-        {
-            _controller.Start();
-        }
-
-        
         private void LateUpdate()
         {
             transform.position = new Vector2(
@@ -48,6 +41,7 @@ namespace BBX.Actor
         
         public PushState Interact(IActorStatuses actorStatuses, Vector2Int direction) => _controller.Interact(actorStatuses, direction);
         public void Push(Vector2Int direction) => _controller.Push(direction);
+        public void Initialise() => _controller.Initialise();
         public void Reset() => _controller.Reset();
     }
 }
